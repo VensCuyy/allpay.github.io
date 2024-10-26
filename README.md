@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, user-scalable=no" />
+<meta name="viewport" content="width=device-width, user-scalable=no"
+/>
 <header>
 <style>
-body {
-        background: black;
+body {        background: black;
         color: black;
-}
-
+} 
 li {
-  color: white; /* bullet color */
+  color: white; /* bullet color */ 
 }
-
 h2 {
         line-height: 1.5;
         font-family: Comic Sans MS;
@@ -19,30 +17,23 @@ h2 {
         text-align: center;
         text-color: WHITE;
 }
-
 #container {
         /*stitching*/
         outline: 1px dashed #FFffff;
         outline-offset: -5px;
-
         background-color: black;
         height: 50px;
         width: 100%;
-
         /*shadow*/
         -webkit-box-shadow: 0px 2px 2px #000;
         -moz-box-shadow: 0px 2px 2px #000;
         box-shadow: 0px 2px 2px #000;
 }
-</style>
-           <center><img src="https://l.top4top.io/p_3220hxaub0.jpg"width="200"height="200"></center></body>
-
+</style>  
+    <center><img src="https://l.top4top.io/p_3220hxaub0.jpg"width="200"height="200"></center></body>
              <center><font face="Forte" size="9" style="color:#ffffff;text-shadow:#FF0099 0px 0px 10px">TRANKSAKSI</font></center>
-
                <center><font style="color:#ffffff;text-shadow: 0px 0px 10px blue" size="4">PAYMENT VensCuyy</font></center>
-
-           <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - -  </font></center>
-
+           <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - </font></center>
              <center>
              <font style="color:red;text-shadow:#000 0px 0px 3px">CATATAN <font style="color:white;text-shadow:#000 0px 0px 3px">:<br>
              <div class="greets">
@@ -55,11 +46,7 @@ h2 {
 </marquee>
 </td>
 </table></div> 
-
           <center><font color="yellow" size="6"> - - - - - - - - - - - - - - - - - </font></center>
-
-
-
     </p>
     <hr/>
  <img class="img-fluid" style="max-height: 30px" src="https://telegra.ph/file/c40e722ccd7e737c54d03.jpg"> 
