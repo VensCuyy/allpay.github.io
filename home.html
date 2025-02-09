@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('bg.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            width: 300px;
+            background-color: #a9bd83;
+            color: white;
+            min-height: 100vh;
+            padding: 1rem;
+            transition: all 0.3s;
+            box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #fef6bf;
+        }
+
+        .card-header {
+            background-color: #fef6bf;
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #264653;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            background-color: #a9bd83;
+        }
+        .navbar-brand {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            color: white;
+        }
+        .btn-outline-secondary {
+            color: #264653;
+            border-color: #264653;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #264653;
+            color: white;
+        }
+        /* Islamic pattern background */
+        .container-fluid {
+            background-image: url('https://www.w3schools.com/w3images/geometry.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+            background-image: url('darkbg.jpg'); 
+        }
+        .dark-mode .card, .dark-mode .footer, .dark-mode .navbar, .dark-mode .sidebar {
+            background-color: #1c1c1c;
+        }
+        .dark-mode .card-header {
+            background-color: #2c2c2c;
+        }
+        .dark-mode .btn-outline-secondary {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        .dark-mode .btn-outline-secondary:hover {
+            background-color: #ffffff;
+            color: #121212;
+        }
+        .spacing {
+         height: 80px; /* Anda bisa mengubah nilai ini sesuai kebutuhan */
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none; /* Hide sidebar by default on smaller screens */
+            }
+            .sidebar.active {
+                display: block; /* Show sidebar when active */
+            }
+            .container-fluid {
+                padding: 1rem;
+            }
+            .d-md-none {
+                display: block;
+            }
+            .spacing {
+             height: 20px; /* Anda bisa mengubah nilai ini sesuai kebutuhan */
+            }
+
+menu {
+  --size: 2.5rem;
+  --radius: 6rem;
+  --padding: 1rem;
+  --bg-color: rgba(255, 255, 255, 0.9);
+  --fg-color: rgba(0, 0, 0, 0.7);
+  --hi-color: #c22eff;
+  
+  position: fixed;
+  bottom: var(--padding);
+  right: var(--padding);
+}
+
+menu > * {
+  position: absolute;
+  
+  display: grid;
+  place-content: center;
+  
+  border-radius: 50%;
+  
+  background: var(--bg-color);
+  color: var(--fg-color);
+  
+  text-decoration: none;
+  
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.6);
+}
+
+menu > .action {
+  --factor: 0;
+  
+  width: var(--size);
+  height: var(--size);
+  right: calc(0.35 * var(--size));
+  bottom: calc(0.35 * var(--size));
+  
+  opacity: 0;
+  
+  transform: rotate(calc(-1 * var(--angle))) translateY(calc(-1 * var(--radius) * var(--factor))) rotate(var(--angle));
+  
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .action:hover, menu > .trigger:hover {
+  color: var(--hi-color);
+  box-shadow: 0px 0px 0px 0.35rem rgba(0, 0, 0, 0.2);
+}
+
+menu.open > .action {
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms;
+}
+
+menu > .action:nth-child(2) {
+  --angle: 30deg;
+  transition-delay: 50ms;
+}
+
+menu > .action:nth-child(3) {
+  --angle: 60deg;
+  transition-delay: 100ms;
+}
+
+menu > .action:nth-child(4) {
+  --angle: 90deg;
+  transition-delay: 150ms;
+}
+
+menu > .trigger {
+  width: calc(1.6 * var(--size));
+  height: calc(1.6 * var(--size));
+  bottom: 0;
+  right: 0;
+  
+  font-size: 2rem;
+  transition: box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .trigger > i {
+  transition: transform 250ms ease-in-out;
+}
+
+menu.open > .trigger > i {
+  transform: rotate(-135deg);
+}{
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="sidebar flex-shrink-0">
+            <header class="text-center mb-4">
+                <h3>Home</h3>
+            </header>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="home.html">
+                        <i class="fa-solid fa-kaaba"></i> Sholat Wajib
+                    </a>
+                </li>    
+                <li>
+                    <a href="sunnah.html">
+                        <i class="fas fa-mosque"> </i> Sholat Sunnah
+                    </a>
+                </li>        
+                <li>
+                    <a href="ibadahtracker.html">
+                        <i class="fa-solid fa-book-quran"></i> Ibadah Tracker
+                    </a>
+                </li> 
+                <li>
+                    <a href="quote.html">
+                        <i class="fa-solid fa-quote-right"></i> Quotes Islami
+                    </a>
+                </li>                 
+                <li>
+                    <a href="about.html">
+                        <i class="fa-solid fa-address-card"></i> About Us
+                    </a>
+                </li>        
+            
+            </ul>
+            <div class="mt-auto text-center">
+                <button class="btn  btn-sm"><a href="index.html" class="text-white text-decoration-none">Logout</a></button>
+            </div>
+            
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid p-2">
+            <header class="d-flex justify-content-between align-items-center mb-3">
+              <button class="btn btn-outline-secondary d-md-none" onclick="toggleSidebar()">☰</button>
+              <h3>Sholat Wajib</h3>
+              <button id="darkModeToggle" class="btn btn-dark">Mode Gelap</button>
+            </header>
+        
+            <div id="carouselExampleIndicators" class="carousel slide" style="height: 250px;">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="card mb-4">
+                      <div class="card-header">
+                        <div class="spacing"></div> <!-- Pengganti <br> -->
+                        <h5 class="text-center">“Kalau impiannya tinggi, sholatnya jangan dinanti-nanti. <br>Kalau impiannya lebih dari satu, sholatnya janggan diakhir waktu. <br>Kalau impiannya mahal, sholatnya jangan ditinggal.” (ib:rullrzq)</h5>     
+                        <div class="spacing"></div> <!-- Pengganti <br> -->
+                      </div>
+                    </div>
+                  </div>                   
+                  <div class="carousel-item">
+                    <div class="card mb-4">
+                      <div class="card-header">
+                        <div class="spacing"></div> <!-- Pengganti <br> -->
+                        <h5 class="text-center">“Gimana hidup ga berantakan, <br>kalau sholatnya aja masih berantakan” rapiin dulu ibadahmu,<br> biar Allah yang rapiin hidupmu. (ib:uorfavi)</h5>     
+                        <div class="spacing"></div> <!-- Pengganti <br> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="card mb-4">
+                      <div class="card-header">
+                        <div class="spacing"></div> <!-- Pengganti <br> -->
+                        <h5 class="text-center">“sebenernya kita hidup di dunia ini cuma buat nungguin  <br>waktu sholat. kita belajar,bekera, bermain dll itu ngisi kegiatan untuk <br>nungguin waktu sholat, biar kita nggak bosan.” (ib:11februari)</h5>     
+                        <div class="spacing"></div> <!-- Pengganti <br> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="font-size: 0.8rem;">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" style="font-size: 0.8rem;">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              
+            <br>
+
+        
+            <div class="row row-cols-lg-3 g-2 g-lg-3">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="niat.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Niat Sholat</h5>
+                            <p class="card-text">Niat sholat dibaca saat sebelum memulai sholat.</p>
+                            <a href="niat.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="iftitah.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Doa Iftitah</h5>
+                            <p class="card-text">
+                                Dibaca setelah takbiratul ihram dan ta'awudz.</p>
+                            <a href="iftitah.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="alfatihah.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Surat Al-Fatihah</h5>
+                            <p class="card-text">Membaca surat al-fatihah dengan benar, setelah membaca doa iftitah.</p>
+                            <a href="alfatihah.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="juz30.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Surat-Surat Pendek</h5>
+                            <p class="card-text">Dibaca setelah membaca surat Al-Fatihah.</p>
+                            <a href="juz30.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="ruku.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Bacaan Ruku dan I'tidal</h5>
+                            <p class="card-text">Dibaca saat melakukan ruku dan i'tidal.</p>
+                            <a href="ruku.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="sujud.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Bacaan Sujud</h5>
+                            <p class="card-text">Dibaca saat melakukan sujud dan duduk diantara 2 sujud.</p>
+                            <a href="sujud.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="tahiyat.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Bacaan Tasyahud/Tahiyat</h5>
+                            <p class="card-text">Dibaca saat tahiyat awal ataupun akhir.</p>
+                            <a href="tahiyat.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="dzikir.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Dzikir Setelah Sholat</h5>
+                            <p class="card-text">Membaca dzikir ini setelah melakukan sholat.</p>
+                            <a href="dzikir.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="doa.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Doa Nabi</h5>
+                            <p class="card-text">Rekomendasi doa-doa yang dilakukan Nabi.</p>
+                            <a href="doa.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="asmaul.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Asmaul Husna</h5>
+                            <p class="card-text">Awali setiap doa dengan memuji nama allah (asmaul husna).</p>
+                            <a href="asmaul.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="sunnah.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Sunnah-Sunnah Dalam Sholat</h5>
+                            <p class="card-text">Hal yang berpahala jika dilakukan dalam sholat.</p>
+                            <a href="sunah.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="larangan.png" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Larangan Dalam Sholat</h5>
+                            <p class="card-text">Hal yang tidak sah jika dilakukan dalam sholat.</p>
+                            <a href="larangan.html" class="btn" style="background-color:#a9bd83; color: white;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+    <footer style="background-color: white; color: black; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <!-- Nama dan Deskripsi -->
+    <div style="margin-bottom: 30px;">
+        <h2 style="color: #34D399; font-size: 24px; font-weight: bold;">Jangan Lupa Sholat😇</h2>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: black; text-decoration: none;">Ingatlah bahwa sholat adalah kewajiban yang tidak dapat di tinggalkan</a></li>
+        </ul>
+    </div>
+
+<div style="display: flex; gap: 30px; margin-bottom: 30px;">
+  <!-- Quick Links -->
+  <div>
+    <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; color: black;">Developer</h3>
+    <ul style="list-style: none; padding: 0; color: white;">
+      <li style="margin-bottom: 5px;"><a href="about.html" style="color: black; text-decoration: none;">Davin</a></li>
+      <li style="margin-bottom: 5px;"><a href="about.html" style="color: black; text-decoration: none;">Umur : 15 Tahun</a></li>
+      <li style="margin-bottom: 5px;"><a href="#" style="color: black; text-decoration: none;">Region :</a></li>
+      <li style="margin-bottom: 5px;"><a href="#" style="color: black; text-decoration: none;">Indonesia, Jawa Timur</a></li>
+    </ul>
+  </div>
+  
+  <!-- Contact Us -->
+  <div>
+    <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; color:black;">Contact Developer</h3>
+    <p style="color: black; margin: 5px 0;">Telegram: t.me/VensCuyy</p>
+    <p style="color: black; margin: 5px 0;">WhatsApp: +62 822-4538-8943</p>
+    <p style="color: black; margin: 5px 0;">Instagram : Vqwrrxy</p>
+    <p style="color: black; margin: 5px 0;">Tiktok : Vens_Cuyy</p>
+  </div>
+</div>
+
+    <!-- Follow Us -->
+    <div>
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; color: black;">Follow Us</h3>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="https://www.youtube.com/@VensCuyy" style="color: black; font-size: 24px;">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://tiktok.com/@Vens_Cuyy" style="color: black; font-size: 24px;">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://t.me/VensCuyy" style="color: black; font-size: 24px;">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://wa.me/6282245388943" style="color: black; font-size: 24px;">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+            </div>
+            
+        </div>
+         
+<menu>
+  <a href="https://wa.me/6285179944903" class="action"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://tiktok.com/@bajisankegelapan" class="action"><i class="fab fa-tiktok"></i></a>
+  <a href="https://t.me/bajisankegelapan" class="action"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Bajisan_gaming_channel" class="action"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="trigger"><i class="fas fa-plus"></i></a>
+</menu>
+    
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+      const trigger = document.querySelector("menu > .trigger");
+trigger.addEventListener('click', (e) => {
+  e.currentTarget.parentElement.classList.toggle("open");
+});
+            document.getElementById('darkModeToggle').onclick = function() {
+                document.body.classList.toggle('dark-mode');
+            }
+            function toggleSidebar() {
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.classList.toggle('active');
+            }
+        </script>
+    </body>
+    </html>
